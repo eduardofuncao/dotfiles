@@ -1,7 +1,7 @@
 local builtin = require('telescope.builtin')
 
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', {})
-vim.api.nvim_set_keymap('v', 'jk', '<Esc>', {})
+-- vim.api.nvim_set_keymap('v', 'jk', '<Esc>', {})
 
 -- telescope
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})

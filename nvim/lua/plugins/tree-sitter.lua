@@ -16,7 +16,8 @@ return {
 				"javascript",
 				"html",
 				"python",
-                "c_sharp"
+                "c_sharp",
+                "markdown"
 			},
 			auto_install = true,
 			sync_install = false,
