@@ -1,0 +1,34 @@
+{
+  "title": "Success",
+  "status": 200,
+  "details": null,
+  "instance": "/v1/order/store/items",
+  "timestamp": "2025-07-10T16:43:36.669751736",
+  "traceId": "687017e75cf2ad4d27c40ad375c69a95",
+  "spanId": "27c40ad375c69a95",
+  "data": [
+    {
+      "itemCode": null,
+      "description": "FL SERA FISHTAMIN 15ML",
+      "code": "30019370000080",
+      "unitValue": 0.1,
+      "amount": 3,
+      "unitDiscount": 0.05,
+      "paymentDiscount": 0.05,
+      "totalValue": 0.05,
+      "images": null,
+      "invoiceNumber": "22",
+      "invoiceSeries": "33",
+      "exchangedItems": 1,
+      "refundedItems": 0,
+      "availableItems": 3
+    }
+  ]
+}
+ 
+hoje:
+exibe se availableItems > 0
+ 
+nova regra:
+exibe vale troca se
+selecionados <= amount - exchangedItem
