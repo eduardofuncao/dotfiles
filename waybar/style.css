@@ -113,9 +113,9 @@ button:hover {
   padding: 0 10px;
 }
 
-#battery.charging,
-#battery.plugged {
-  color: @sapphire;
+/* #battery.charging, */
+/* #battery.plugged { */
+/*   color: @sapphire; */
 }
 
 @keyframes blink {
