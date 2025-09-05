@@ -5,7 +5,7 @@ dotfiles = pkgs.fetchFromGitHub {
 	owner = "eduardofuncao";
 	repo = "dotfiles";
 	rev = "main";
-	sha256 = "0l1b91idm74pr0rcsrwyp07bmgxvvy6i3icdsbz1wdsc84vfgiwg";
+	sha256 = "042g9alyzjkfqq2yb74jis26jc1kcgj5y6l3bn7ng0znz33ldxm9";
 };
 in
 {
@@ -31,6 +31,10 @@ in
     };
     ".config/waybar" = {
       source = "${dotfiles}/waybar";
+      recursive = true;
+    };
+    ".config/ripgrep" = {
+      source = "${dotfiles}/ripgrep";
       recursive = true;
     };
     ".config/background" = {
@@ -169,21 +173,14 @@ in
   
   # Additional packages for theming and functionality
   home.packages = with pkgs; [
-    kdePackages.breeze-gtk
-    kdePackages.breeze-icons
-    kdePackages.breeze
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
+    kdePackages.breeze-gtk kdePackages.breeze-icons kdePackages.breeze
+    noto-fonts noto-fonts-cjk-sans noto-fonts-emoji
     
-    inputs.zen-browser.packages.${system}.default
-    
-    zsh-autosuggestions
-    zsh-completions
-    zsh-syntax-highlighting
+    zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+    dstask tldr fastfetch
 
-    dstask
-    tldr
+    obs-studio docker bruno
+    inputs.zen-browser.packages.${system}.default
   ];
 
   # Environment variables

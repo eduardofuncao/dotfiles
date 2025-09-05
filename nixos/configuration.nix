@@ -79,41 +79,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  	vim
-	inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
-	git
-	wget
-	curl
-	kanata
-	unzip
-	firefox
-
-	zoxide
-	tmux
-	oh-my-zsh
-	starship
-
-	pavucontrol
-	alsa-utils
-	wireplumber
-	blueman
-
-	btop
-	ripgrep
-	fzf
-	fd
-	bat
-
-	imv
-	zathura
-
-	gcc
-	gnumake
-	cmake
-	nodejs
-	nodePackages.npm
-	go
-	python3
+    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+    vim
+    git wget curl jq unzip
+    kanata
+    tmux oh-my-zsh starship
+    ripgrep zoxide fzf fd bat exa
+    btop light pavucontrol alsa-utils wireplumber blueman
+    imv zathura mpv
+    gcc gnumake cmake nodejs nodePackages.npm go python3 openjdk
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
