@@ -5,7 +5,7 @@ dotfiles = pkgs.fetchFromGitHub {
 	owner = "eduardofuncao";
 	repo = "dotfiles";
 	rev = "main";
-	sha256 = "042g9alyzjkfqq2yb74jis26jc1kcgj5y6l3bn7ng0znz33ldxm9";
+	sha256 = "0znbamn1cg7mpv2xf58az5cyf1ylf73fz17ixn63kwwkxlyxcnwi";
 };
 in
 {
