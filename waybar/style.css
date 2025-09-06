@@ -80,6 +80,7 @@ button:hover {
 
 #battery {
   color: @text;
+  background: @base;
 }
 
 #memory {
@@ -113,10 +114,10 @@ button:hover {
   padding: 0 10px;
 }
 
-#battery.charging,
-#battery.plugged {
-  color: @sapphire;
-}
+/* #battery.charging, */
+/* #battery.plugged { */
+/*   color: @sapphire; */
+/* } */
 
 @keyframes blink {
   to {
@@ -142,3 +143,4 @@ label:focus {
 #pulseaudio.muted {
   color: @text;
 }
+
