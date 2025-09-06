@@ -5,7 +5,7 @@ dotfiles = pkgs.fetchFromGitHub {
 	owner = "eduardofuncao";
 	repo = "dotfiles";
 	rev = "main";
-	sha256 = "0znbamn1cg7mpv2xf58az5cyf1ylf73fz17ixn63kwwkxlyxcnwi";
+	sha256 = "0himsfpz6d5w3byy558xwdvzisvgi6nql2mmgn234l2j5p2kgjqh";
 };
 in
 {
@@ -181,6 +181,8 @@ in
 
     obs-studio docker bruno
     inputs.zen-browser.packages.${system}.default
+
+    lua-language-server gopls pyright delve
   ];
 
   # Environment variables
