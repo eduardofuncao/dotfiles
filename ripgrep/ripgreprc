@@ -14,4 +14,4 @@
 # --context 2
 
 # Enable colors
---colors 'match:bg:yellow'
+# --colors 'match:bg:yellow'
