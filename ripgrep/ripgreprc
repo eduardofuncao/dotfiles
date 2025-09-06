@@ -5,7 +5,7 @@
 --smart-case
 
 # Ignore binary files
---ignore-file ~/.config/ripgrep/ignore
+# --ignore-file ~/.config/ripgrep/ignore
 
 # Show file headings
 --heading
