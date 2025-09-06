@@ -11,7 +11,7 @@
 --heading
 
 # Show context (2 lines before and after match)
---context 2
+# --context 2
 
 # Enable colors
 --colors 'match:bg:yellow'
