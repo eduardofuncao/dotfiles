@@ -5,7 +5,7 @@ let
     owner = "eduardofuncao";
     repo = "dotfiles";
     rev = "main";
-    sha256 = "123dwdajry6nmdaazr6r0awcl8g418xr59zvfj4cypz8h78659wz"; 
+    sha256 = "1wasj04xg1m61jp03c9y3vprnby971vbnrmcs4hxl1wfgyalbsg8"; 
     # nix-prefetch-url --unpack https://github.com/eduardofuncao/dotfiles/archive/main.tar.gz
   };
   kanataConfig = "${dotfiles}/kanata/kanata.kbd";

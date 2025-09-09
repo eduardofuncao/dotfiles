@@ -1,30 +1,41 @@
 { config, pkgs, inputs, ... }:
 
 let
-dotfiles = pkgs.fetchFromGitHub {
-	owner = "eduardofuncao";
-	repo = "dotfiles";
-	rev = "main";
-	sha256 = "0himsfpz6d5w3byy558xwdvzisvgi6nql2mmgn234l2j5p2kgjqh";
-};
+  dotfiles = pkgs.fetchFromGitHub {
+    owner = "eduardofuncao";
+    repo = "dotfiles";
+    rev = "main";
+    sha256 = "1wasj04xg1m61jp03c9y3vprnby971vbnrmcs4hxl1wfgyalbsg8";
+  };
 in
 {
+  # =========================================================================
+  # HOME MANAGER CONFIGURATION
+  # =========================================================================
+  
   home.username = "eduardo";
   home.homeDirectory = "/home/eduardo";
-
   home.stateVersion = "25.05";
-
+  
   programs.home-manager.enable = true;
 
+  # =========================================================================
+  # XDG CONFIGURATION
+  # =========================================================================
+  
+  xdg.enable = true;
+
+  # =========================================================================
+  # DOTFILES MANAGEMENT
+  # =========================================================================
+  
   home.file = {
-    ".config/kitty" = {
-      source = "${dotfiles}/kitty";
-      recursive = true;
+    # Terminal and shell configurations
+    ".tmux.conf" = {
+      source = "${dotfiles}/tmux.conf";
     };
-    ".config/nvim" = {
-      source = "${dotfiles}/nvim";
-      recursive = true;
-    };
+    
+    # Desktop environment configurations
     ".config/hypr" = {
       source = "${dotfiles}/hypr";
       recursive = true;
@@ -33,24 +44,40 @@ in
       source = "${dotfiles}/waybar";
       recursive = true;
     };
-    ".config/ripgrep" = {
-      source = "${dotfiles}/ripgrep";
+    
+    # Terminal emulator
+    ".config/kitty" = {
+      source = "${dotfiles}/kitty";
       recursive = true;
     };
-    ".config/background" = {
-      source = "${dotfiles}/background";
+    
+    # Editor configuration
+    ".config/nvim" = {
+      source = "${dotfiles}/nvim";
+      recursive = true;
+    };
+    
+    # Tools and utilities
+    ".config/ripgrep" = {
+      source = "${dotfiles}/ripgrep";
       recursive = true;
     };
     ".config/scripts" = {
       source = "${dotfiles}/scripts";
       recursive = true;
     };
-    ".tmux.conf" = {
-      source = "${dotfiles}/tmux.conf";
+    
+    # Media and appearance
+    ".config/background" = {
+      source = "${dotfiles}/background";
+      recursive = true;
     };
   };
 
-  # Zsh configuration with Oh My Zsh
+  # =========================================================================
+  # SHELL CONFIGURATION
+  # =========================================================================
+  
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -103,17 +130,34 @@ in
     '';
   };
 
-  # Starship prompt configuration
+  # Terminal prompt
   programs.starship = {
     enable = true;
   };
 
-  # Zoxide configuration
+  # Directory navigation
   programs.zoxide = {
     enable = true;
   };
 
-  # Theme
+  # =========================================================================
+  # VERSION CONTROL
+  # =========================================================================
+  
+  programs.git = {
+    enable = true;
+    userName = "Eduardo Função";
+    userEmail = "eduardofuncao@hotmail.com";
+    extraConfig = {
+      core.editor = "nvim";
+    };
+  };
+
+  # =========================================================================
+  # THEMING AND APPEARANCE
+  # =========================================================================
+  
+  # GTK theme configuration
   gtk = {
     enable = true;
     theme = {
@@ -161,17 +205,17 @@ in
     gtk.enable = true;
     x11.enable = true;
   };
+
+  # =========================================================================
+  # FONTS
+  # =========================================================================
   
-  programs.git = {
-    enable = true;
-    userName = "Eduardo Função";
-    userEmail = "eduardofuncao@hotmail.com";
-    extraConfig = {
-      core.editor = "nvim";
-    };
-  };
+  fonts.fontconfig.enable = true;
+
+  # =========================================================================
+  # PACKAGES
+  # =========================================================================
   
-  # Additional packages for theming and functionality
   home.packages = with pkgs; [
     kdePackages.breeze-gtk kdePackages.breeze-icons kdePackages.breeze
     noto-fonts noto-fonts-cjk-sans noto-fonts-emoji
@@ -179,13 +223,14 @@ in
     zsh-autosuggestions zsh-completions zsh-syntax-highlighting
     dstask tldr fastfetch
 
-    obs-studio docker bruno
+    obs-studio bruno
     inputs.zen-browser.packages.${system}.default
-
-    lua-language-server gopls pyright delve
   ];
 
-  # Environment variables
+  # =========================================================================
+  # ENVIRONMENT VARIABLES
+  # =========================================================================
+  
   home.sessionVariables = {
     GTK_THEME = "Breeze-Dark";
     XCURSOR_THEME = "breeze_cursors";
@@ -194,10 +239,4 @@ in
     FUNCNEST = "100";
     RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/ripgreprc";
   };
-
-  # Configure fonts system-wide (excluding terminal)
-  fonts.fontconfig.enable = true;
-
-  # XDG configuration for proper application behavior
-  xdg.enable = true;
 }
