@@ -10,8 +10,6 @@
   # =========================================================================
   imports = [
     ./hardware-configuration.nix
-    ./hyprland.nix
-    ./kanata.nix
   ];
 
   # =========================================================================
@@ -112,11 +110,15 @@
   hardware.bluetooth.enable = true;
 
   # Audio services
+  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
     jack.enable = true;
     wireplumber.enable = true;
+
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
 
   virtualisation.docker = {

@@ -29,6 +29,9 @@
           specialArgs = { inherit inputs; };
           modules = [ 
             ./configuration.nix
+	    ./kanata.nix
+	    #./gaming.nix
+	    ./hyprland.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
