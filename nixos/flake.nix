@@ -29,15 +29,15 @@
           specialArgs = { inherit inputs; };
           modules = [ 
             ./configuration.nix
-	    ./kanata.nix
-	    #./gaming.nix
-	    ./hyprland.nix
+	    ./modules/kanata.nix
+	    #./modules/gaming.nix
+	    ./modules/hyprland.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.eduardo = import ./home.nix;
+              home-manager.users.eduardo = import ./modules/home.nix;
               home-manager.extraSpecialArgs = { inherit inputs; };
             }
           ];
