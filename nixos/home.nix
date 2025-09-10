@@ -5,7 +5,7 @@ let
     owner = "eduardofuncao";
     repo = "dotfiles";
     rev = "main";
-    sha256 = "1wasj04xg1m61jp03c9y3vprnby971vbnrmcs4hxl1wfgyalbsg8";
+    sha256 = "0llp8zh2sydgv01xkvgqvv53jkmhc0wcvbdrk9pbidxlbgcwjvaq";
   };
 in
 {
@@ -198,7 +198,7 @@ in
   qt = {
     enable = true;
     platformTheme.name = "kde";
-    style.name = "breeze";
+    style.name = "breeze-dark";
   };
 
   # Configure cursor theme for Wayland
@@ -227,7 +227,7 @@ in
     zsh-autosuggestions zsh-completions zsh-syntax-highlighting
     dstask tldr fastfetch
 
-    obs-studio bruno
+    obs-studio bruno ferdium
     inputs.zen-browser.packages.${system}.default
   ];
 
