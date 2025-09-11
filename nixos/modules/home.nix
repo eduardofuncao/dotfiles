@@ -225,9 +225,9 @@ in
     noto-fonts noto-fonts-cjk-sans noto-fonts-emoji
     
     zsh-autosuggestions zsh-completions zsh-syntax-highlighting
-    dstask tldr fastfetch
+    dstask tldr fastfetch ncdu
 
-    obs-studio bruno ferdium
+    obs-studio bruno ferdium thunderbird
     inputs.zen-browser.packages.${system}.default
   ];
 

@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 
 let
+  httptoolkit = pkgs.callPackage ./httptoolkit.nix {};
+
   web-agent-unwrapped = pkgs.stdenv.mkDerivation rec {
     pname = "web-agent-unwrapped";
     version = "1.0.0";
@@ -125,15 +127,17 @@ let
       platforms = platforms.linux;
     };
   };
+
 in
 {
   home.packages = with pkgs; [
-    android-studio
     httptoolkit
     dbeaver-bin
     openfortivpn
+    android-studio
+
     steam-run
-    web-agent  # Your custom package
+    web-agent
   ];
 
   # Also install the desktop file and icons separately for system integration
