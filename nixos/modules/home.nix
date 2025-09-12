@@ -123,6 +123,11 @@ in
           dstask stop $1
       }
 
+      cdin() {
+        read -r dir
+        [[ -n "$dir" ]] && cd "$dir"
+      }
+
       # Initialize starship and zoxide
       eval "$(starship init zsh)"
       eval "$(zoxide init zsh)"
@@ -224,7 +229,7 @@ in
     kdePackages.breeze-gtk kdePackages.breeze-icons kdePackages.breeze
     noto-fonts noto-fonts-cjk-sans noto-fonts-emoji
     
-    zsh-autosuggestions zsh-completions zsh-syntax-highlighting
+    zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-you-should-use
     dstask tldr fastfetch ncdu
 
     obs-studio bruno ferdium thunderbird
