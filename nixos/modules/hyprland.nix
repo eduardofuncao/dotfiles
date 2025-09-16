@@ -35,8 +35,28 @@ in {
     nerd-fonts.jetbrains-mono
   ];
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = with pkgs; [
-    xdg-desktop-portal-wlr
-  ];
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        # wlroots specific
+        # use xdg-desktop-portal-gtk for gnome.
+        xdg-desktop-portal-hyprland
+      ];
+      # uncomment for gnome
+      # gtkUsePortal = true;
+    };
+  };
+  
+  xdg.portal.wlr.settings = {
+    screencast = {
+      # set the output_name (this doesn't really matter)
+  	  output_name = "HDMI-A";
+  	  max_fps = 60;
+  	  chooser_type = "simple";
+  	  chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";		
+    };
+};
+
+
 }
