@@ -49,8 +49,7 @@
   home.packages = with pkgs; [ 
     inputs.zen-browser.packages.${system}.default
     (callPackage ../modules/home-manager/polycat.nix { })
-    tmux zsh oh-my-zsh starship
-    zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-you-should-use
+    tmux starship
     dstask tldr fastfetch ncdu
     swaybg
     obs-studio bruno ferdium thunderbird
@@ -75,25 +74,6 @@
   };
   programs.zoxide = {
     enable = true;
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-    
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "colored-man-pages"
-        "history-substring-search"
-        "extract"
-        "web-search"
-        # "vi-mode"
-      ];
-    };
   };
 
   # Create the systemd user service

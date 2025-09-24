@@ -96,9 +96,9 @@
   console.keyMap = "br-abnt2";
 
   networking.hostName = "nixos";
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = with pkgs; [ zsh ];
-  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.fish;
+  environment.shells = with pkgs; [ fish ];
+  programs.fish.enable = true;
 
   users.users = {
     eduardo = {
@@ -145,6 +145,7 @@
     imv zathura mpv
     gcc gnumake cmake nodejs nodePackages.npm go python3 openjdk
     docker-compose
+    qemu quickemu
   ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.

@@ -1,0 +1,24 @@
+* {
+  background: #181825;
+  color: #d8dee9;
+  border: none;
+  font-family: JetBrainsMono, monospace;
+  font-size: 14px;
+  margin: 0 6px;
+}
+
+#battery {
+  margin:0 1.5px;
+}
+
+#memory {
+  padding-bottom: 2.5px;
+}
+
+#custom-polycat {
+    font-size: 20px;
+}
+
+#custom-nixos {
+    font-size: 20px;
+}

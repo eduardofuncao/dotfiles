@@ -11,6 +11,7 @@ in
     dbeaver-bin
     openfortivpn
     android-studio
+    teams-for-linux
 
     steam-run
     web-agent
