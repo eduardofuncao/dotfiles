@@ -45,19 +45,20 @@
   };
 
   # Add stuff for your user as you see fit:
-  programs.neovim.enable = true;
   home.packages = with pkgs; [ 
     inputs.zen-browser.packages.${system}.default
+    inputs.vicinae.packages.${system}.default
     (callPackage ../modules/home-manager/polycat.nix { })
     tmux starship
-    dstask tldr fastfetch ncdu
-    swaybg
-    obs-studio bruno ferdium thunderbird
+    dstask tldr fastfetch ncdu dig httpie
+    obs-studio bruno ferdium thunderbird high-tide
 
     papirus-folders
     arc-theme
     arc-icon-theme
   ];
+
+  programs.neovim.enable = true;
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -76,26 +77,48 @@
     enable = true;
   };
 
-  # Create the systemd user service
-  systemd.user.services.swaybg = {
+  systemd.user.services.vicinae = {
     Unit = {
-      Description = "Wayland wallpaper daemon";
-      Documentation = "man:swaybg(1)";
-      PartOf = [ "graphical-session.target" ];
+      Description = "Vicinae server daemon";
+      Documentation = [ "https://docs.vicinae.com" ];
       After = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+      BindsTo = [ "graphical-session.target" ];
     };
     Service = {
       Type = "simple";
-      ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${config.home.homeDirectory}/.config/wallpapers/bg.jpg -m fill";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
+      ExecStart = "${inputs.vicinae.packages.${pkgs.system}.default}/bin/vicinae server";
+      Restart = "always";
+      RestartSec = "5";
+      KillMode = "process";
+      Environment = "USE_LAYER_SHELL=1";
     };
-
     Install = {
       WantedBy = [ "graphical-session.target" ];
     };
   };
+
+
+  # # Create the systemd user service
+  # systemd.user.services.swaybg = {
+  #   Unit = {
+  #     Description = "Wayland wallpaper daemon";
+  #     Documentation = "man:swaybg(1)";
+  #     PartOf = [ "graphical-session.target" ];
+  #     After = [ "graphical-session.target" ];
+  #   };
+  #   Service = {
+  #     Type = "simple";
+  #     ExecStart = "${pkgs.swaybg}/bin/swaybg -i ${config.home.homeDirectory}/.config/wallpapers/bg.jpg -m fill";
+  #     Restart = "on-failure";
+  #     RestartSec = 1;
+  #     TimeoutStopSec = 10;
+  #   };
+  #
+  #   Install = {
+  #     WantedBy = [ "graphical-session.target" ];
+  #   };
+  # };
 
 
 

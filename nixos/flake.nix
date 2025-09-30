@@ -29,9 +29,10 @@
           specialArgs = { inherit inputs; };
           modules = [ 
             ./configuration.nix
-	    ./modules/kanata.nix
-	    #./modules/gaming.nix
-	    ./modules/hyprland.nix
+            ./modules/kanata.nix
+            #./modules/gaming.nix
+            ./modules/hyprland.nix
+            # ./modules/niri.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

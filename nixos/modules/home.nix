@@ -232,7 +232,7 @@ imports = [
     zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-you-should-use
     dstask tldr fastfetch ncdu
 
-    obs-studio bruno ferdium thunderbird
+    obs-studio bruno ferdium thunderbird teams-for-linux
     inputs.zen-browser.packages.${system}.default
   ];
 

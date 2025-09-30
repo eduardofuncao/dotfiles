@@ -15,7 +15,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     ../modules/nixos/niri.nix
-    ../modules/nixos/gaming.nix
+    # ../modules/nixos/gaming.nix
     ../modules/nixos/kanata.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -64,6 +64,17 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # DM
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.tuigreet}/bin/tuigreet --greeting '★·.·´¯`·.·★·.·´¯`·.·★·.·´¯`·.·★·.·´¯`·.·★' --asterisks --remember --time --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -136,6 +147,7 @@
   
 
   environment.systemPackages = with pkgs; [
+    tuigreet
     neovim
     vim
     git wget curl jq unzip
@@ -143,7 +155,7 @@
     ripgrep zoxide fzf fd bat eza
     btop light pavucontrol alsa-utils wireplumber blueman
     imv zathura mpv
-    gcc gnumake cmake nodejs nodePackages.npm go python3 openjdk
+    gcc gnumake cmake nodejs nodePackages.npm go gopls delve python3 openjdk
     docker-compose
     qemu quickemu
   ];

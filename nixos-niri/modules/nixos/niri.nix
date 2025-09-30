@@ -11,7 +11,7 @@
     kitty
     swaybg
     swayidle
-    swaylock
+    swaylock-effects
     xwayland-satellite
 
     grim
