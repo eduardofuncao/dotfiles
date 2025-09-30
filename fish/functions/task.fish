@@ -1,3 +1,3 @@
 function task
-  dstask
+  dstask $argv
 end

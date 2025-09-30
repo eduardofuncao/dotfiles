@@ -20,7 +20,8 @@ input {
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
         }
-
+        repeat-delay 200
+        repeat-rate 35
         // Enable numlock on startup, omitting this setting disables it.
         numlock
     }
@@ -270,7 +271,9 @@ layout {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
-//spawn-at-startup "swaybg -i ~/Downloads/bg.jpg --mode fill"
+// spawn-sh-at-startup "swaybg -i ~/.config/wallpapers/bg.png --mode fill"
+spawn-sh-at-startup "swaybg -i $(find ~/.config/wallpapers -type f | shuf -n 1) --mode fill"
+spawn-sh-at-startup "swayidle -w"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -365,7 +368,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
-    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Space hotkey-overlay-title="Run an Application: vicinae" { spawn "vicinae"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.

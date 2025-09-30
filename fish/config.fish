@@ -1,6 +1,6 @@
 set -x fish_greeting ""
 set -x EDITOR nvim
-set -x PAGER bat
+set -x PAGER less
 
 fish_vi_key_bindings
 
