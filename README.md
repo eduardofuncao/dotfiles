@@ -1,2 +1,3 @@
 # dotfiles
-My custom configuration for nvim, kitty and hyprland
+
+create symlinks to .config directory with `bash setup-config.sh`
