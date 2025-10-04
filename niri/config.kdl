@@ -272,7 +272,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 // spawn-sh-at-startup "swaybg -i ~/.config/wallpapers/bg.png --mode fill"
-spawn-sh-at-startup "swaybg -i $(find ~/.config/wallpapers -type f | shuf -n 1) --mode fill"
+spawn-sh-at-startup "swaybg -i $(fd -t f . $HOME/.config/wallpapers | shuf -n 1) --mode fill"
 spawn-sh-at-startup "swayidle -w"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
