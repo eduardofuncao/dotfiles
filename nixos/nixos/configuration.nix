@@ -152,8 +152,8 @@
     vim
     git wget curl jq unzip
     kanata
-    ripgrep zoxide fzf fd bat eza
-    btop light pavucontrol alsa-utils wireplumber blueman
+    ripgrep zoxide fd bat eza
+    light pavucontrol alsa-utils wireplumber blueman
     imv zathura mpv
     gcc gnumake cmake nodejs nodePackages.npm go gopls delve python3 openjdk
     docker-compose

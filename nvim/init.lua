@@ -83,6 +83,7 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>p", '"+p')
 -------------
 vim.pack.add({
   { src = "https://github.com/sainnhe/everforest" },
+  { src = "https://github.com/vague-theme/vague.nvim"},
   { src = 'https://github.com/nvim-tree/nvim-web-devicons' },
   { src = "https://github.com/mason-org/mason.nvim" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
@@ -147,6 +148,11 @@ vim.g.everforest_better_performance = 1
 vim.g.everforest_enable_italic = 1
 vim.g.everforest_disable_italic_comment = 0
 vim.g.everforest_transparent_background = 1
+
+require("vague").setup({
+  transparent = true,
+})
+
 vim.cmd.colorscheme("everforest")
 
 vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg = '#E0A4BA', bold = true, underline = true })

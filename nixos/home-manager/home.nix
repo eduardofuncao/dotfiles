@@ -14,7 +14,15 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    inputs.stylix.homeModules.stylix
+    inputs.zen-browser.homeModules.beta
+
     ../modules/home-manager/work/work.nix
+    ../modules/home-manager/stylix.nix
+
+    ../modules/home-manager/config/tmux.nix
+    ../modules/home-manager/config/kitty.nix
+    ../modules/home-manager/config/waybar.nix
   ];
 
   nixpkgs = {
@@ -46,11 +54,10 @@
 
   # Add stuff for your user as you see fit:
   home.packages = with pkgs; [ 
-    inputs.zen-browser.packages.${system}.default
     inputs.vicinae.packages.${system}.default
     (callPackage ../modules/home-manager/polycat.nix { })
     tmux starship
-    dstask tldr fastfetch ncdu dig httpie
+    tldr fastfetch ncdu dig httpie vhs #dstask
     obs-studio bruno ferdium thunderbird high-tide
 
     papirus-folders
@@ -59,6 +66,11 @@
   ];
 
   programs.neovim.enable = true;
+  programs.btop.enable = true;
+  programs.fzf.enable = true;
+  services.mako.enable = true;
+  programs.zen-browser.enable = true;
+  programs.yazi.enable = true;
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
@@ -68,6 +80,7 @@
     userEmail = "eduardofuncao@hotmail.com";
     extraConfig = {
       core.editor = "nvim";
+      init.defaultBranch = "main";
     };
   };
   programs.starship = {
@@ -123,58 +136,58 @@
 
 
   # Theme
-    gtk = {
-    enable = true;
-    theme = {
-      name = "Arc-Dark";
-      package = pkgs.arc-theme;
-    };
-    iconTheme = {
-      name = "Arc";
-      package = pkgs.arc-icon-theme;
-    };
-    cursorTheme = {
-      name = "Adwaita";
-      package = pkgs.gnome-themes-extra;
-    };
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-  };
+  #   gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Arc-Dark";
+  #     package = pkgs.arc-theme;
+  #   };
+  #   iconTheme = {
+  #     name = "Arc";
+  #     package = pkgs.arc-icon-theme;
+  #   };
+  #   cursorTheme = {
+  #     name = "Adwaita";
+  #     package = pkgs.gnome-themes-extra;
+  #   };
+  #   gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+  # };
 
-  home.pointerCursor = {
-    enable = true;
-    gtk.enable = true;
-    name = "Adwaita";
-    package = pkgs.gnome-themes-extra;
-    size = 16;
-  };
+  # home.pointerCursor = {
+  #   enable = true;
+  #   gtk.enable = true;
+  #   name = "Adwaita";
+  #   package = pkgs.gnome-themes-extra;
+  #   size = 16;
+  # };
   
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      gtk-theme = "Arc-Dark";
-      color-scheme = "prefer-dark";
-    };
-  };
-  
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style = {
-      name = "gtk2";
-      package = pkgs.arc-theme;
-    };
-  };
-
-  home.file.".config/mako/config".text = ''
-    background-color=#181825
-    text-color=#d8dee9
-    border-color=#282a36
-    border-size=2
-    font=JetBrainsMono 10
-  '';
-
-  home.sessionVariables = {
-    XCURSOR_SIZE = "16";
-  };
+  # dconf.settings = {
+  #   "org/gnome/desktop/interface" = {
+  #     gtk-theme = "Arc-Dark";
+  #     color-scheme = "prefer-dark";
+  #   };
+  # };
+  #
+  # qt = {
+  #   enable = true;
+  #   platformTheme.name = "gtk";
+  #   style = {
+  #     name = "gtk2";
+  #     package = pkgs.arc-theme;
+  #   };
+  # };
+  #
+  # home.file.".config/mako/config".text = ''
+  #   background-color=#181825
+  #   text-color=#d8dee9
+  #   border-color=#282a36
+  #   border-size=2
+  #   font=JetBrainsMono 10
+  # '';
+  #
+  # home.sessionVariables = {
+  #   XCURSOR_SIZE = "16";
+  # };
 
 
   # Nicely reload system units when changing configs

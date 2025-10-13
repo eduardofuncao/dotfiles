@@ -3,7 +3,6 @@
 {
   environment.systemPackages = with pkgs; [
     fuzzel
-    mako
     waybar
     wl-clipboard
     xdg-desktop-portal-gtk
@@ -49,6 +48,8 @@
 
   fonts.packages = with pkgs; [
    nerd-fonts.jetbrains-mono
+   maple-mono.truetype
+   lato
   ];
 
   environment.sessionVariables = {

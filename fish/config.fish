@@ -1,4 +1,4 @@
-set -gx PATH $HOME/.config/scripts $PATH
+set -gx PATH $HOME/.config/scripts $HOME/go/bin $PATH
 set -x fish_greeting ""
 set -x EDITOR nvim
 set -x PAGER less
