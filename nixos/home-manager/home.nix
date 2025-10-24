@@ -17,7 +17,7 @@
     inputs.stylix.homeModules.stylix
     inputs.zen-browser.homeModules.beta
 
-    ../modules/home-manager/work/work.nix
+    # ../modules/home-manager/work/work.nix
     ../modules/home-manager/stylix.nix
 
     ../modules/home-manager/config/tmux.nix
