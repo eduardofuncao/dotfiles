@@ -56,12 +56,16 @@ NIX_CONFIG="experimental-features = nix-command flakes" sudo nixos-rebuild switc
 ```
 this will take a while ⏳
 
-- run home-manager switch (similarly, on the first build we need to explicitly install home-manager.
+- run home-manager switch to setup user level config (similarly, on the first build we need to explicitly install home-manager.
 for the next runs, just use `home-manager switch --flake .#user@hostname)
 ```bash
 cd /etc/nixos
 nix-shell -p home-manager
 home-manager switch --flake .#eduardo@nixos
 ```
+
+this will take an even longer while 😴
+
+just `sudo reboot` your system and everything should work!
 
 Done 🥳
