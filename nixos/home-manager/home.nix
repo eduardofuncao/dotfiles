@@ -59,6 +59,8 @@
     tmux starship
     tldr fastfetch ncdu dig httpie vhs #dstask
     obs-studio bruno ferdium thunderbird high-tide
+    love
+    devenv
 
     papirus-folders
     arc-theme
@@ -71,6 +73,7 @@
   services.mako.enable = true;
   programs.zen-browser.enable = true;
   programs.yazi.enable = true;
+  programs.distrobox.enable = true;
 
   # Enable home-manager and git
   programs.home-manager.enable = true;

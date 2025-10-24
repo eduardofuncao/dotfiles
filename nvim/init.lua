@@ -100,7 +100,7 @@ vim.pack.add({
 
   { src = "https://github.com/echasnovski/mini.pick" },
   { src = "https://github.com/echasnovski/mini.files" },
-  { src = "https://github.com/echasnovski/mini.pairs" },
+  -- { src = "https://github.com/echasnovski/mini.pairs" },
 
   { src = "https://github.com/folke/snacks.nvim" },
   { src = "https://github.com/HakonHarnes/img-clip.nvim" },
@@ -110,6 +110,7 @@ vim.pack.add({
   { src = "https://github.com/karb94/neoscroll.nvim" },
   { src = 'http://github.com/jinh0/eyeliner.nvim' },
 
+  { src = 'http://github.com/S1M0N38/love2d.nvim' },
 })
 
 -------------------

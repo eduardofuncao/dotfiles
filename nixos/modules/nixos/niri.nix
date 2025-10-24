@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -26,7 +26,7 @@
   programs.niri.enable = true;
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   systemd.user.services.mako = {
     enable = true;
@@ -41,15 +41,16 @@
   xdg.portal.config = {
     common = {
       default = [
-        "gtk" "gnome"
+        "gtk"
+        "gnome"
       ];
     };
   };
 
   fonts.packages = with pkgs; [
-   nerd-fonts.jetbrains-mono
-   maple-mono.truetype
-   lato
+    nerd-fonts.jetbrains-mono
+    maple-mono.truetype
+    lato
   ];
 
   environment.sessionVariables = {

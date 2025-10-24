@@ -4,6 +4,7 @@
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal-gorgoroth.yaml";
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/vesper.yaml";
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal.yaml";
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/mocha.yaml";
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
   # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/terracotta.yaml";
   stylix.image = ./bg.jpg;
@@ -16,6 +17,7 @@
     neovim.enable = false;
     tmux.enable = true;
     waybar.enable = true;
+    gtk.enable = true;
     zen-browser = {
       enable = false;
       profileNames = [ "default" ];

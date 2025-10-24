@@ -17,6 +17,8 @@ require("nvim-treesitter.configs").setup({
     "json",
     "yaml",
     "markdown",
+    "nix",
+    "robot",
   },
   sync_install = false,
   highlight = {

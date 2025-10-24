@@ -1,7 +1,6 @@
 ---------
 -- lsp --
 ---------
-vim.lsp.enable({ "lua_ls", "gopls", "pyright" })
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -29,13 +28,71 @@ require("blink.cmp").setup({
   },
 })
 
--- disable lsp warning for missing vim
+vim.lsp.config['nil'] = {
+  cmd = { "nil" },
+  filetypes = { "nix" },
+  root_markers = { "flake.nix", ".git" },
+  settings = {
+    ['nil'] = {
+      formatting = {
+        command = { "nixpkgs-fmt" }
+      }
+    }
+  }
+}
+
 vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+      runtime = {
+        version = "LuaJIT",
+        special = {
+          love = "require",
+        },
       },
+      diagnostics = {
+        globals = { "love", "vim" },
+      },
+      workspace = {
+        -- Optionally add your project folder to library
+        library = {
+          vim.api.nvim_get_runtime_file("", true),
+          "${3rd}/love2d/library",
+        }
+      },
+      telemetry = { enable = false },
     },
   },
 })
+
+
+vim.lsp.config['robotcode'] = {
+  cmd = { 'robotcode', 'language-server' },
+  filetypes = { "robot", "resource" },
+  root_dir = vim.fs.dirname(
+    vim.fs.find({ 'robot.toml', 'robot.yaml', '.git' }, { upward = true })[1]
+  ),
+  settings = {
+    robot = {
+      python = {
+        executable = "python"
+      },
+      -- Language server analysis settings
+      analysis = {
+        diagnostic = {
+          -- Disable variable naming warnings
+          variableNaming = false,
+          missingDocumentation = false
+        }
+      },
+      -- Or use more granular control
+      diagnostics = {
+        variableNamingConvention = "ignore",
+        missingDocumentation = "ignore",
+        overwrittenVariable = "hint"
+      }
+    }
+  }
+}
+
+vim.lsp.enable({ "lua_ls", "gopls", "pyright", "nil", "robotcode" })

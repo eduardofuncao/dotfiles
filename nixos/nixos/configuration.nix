@@ -1,11 +1,10 @@
 # This is your system's configuration file.
 # Use this to configure your system environment (it replaces /etc/nixos/configuration.nix)
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, lib
+, config
+, pkgs
+, ...
 }: {
   # You can import other NixOS modules here
   imports = [
@@ -42,25 +41,28 @@
     };
   };
 
-  nix = let
-    flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
-  in {
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Opinionated: disable global registry
-      flake-registry = "";
-      # Workaround for https://github.com/NixOS/nix/issues/9574
-      nix-path = config.nix.nixPath;
-    };
-    # Opinionated: disable channels
-    channel.enable = false;
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        trusted-users = [ "root" "eduardo" ];
+        # Enable flakes and new 'nix' command
+        experimental-features = "nix-command flakes";
+        # Opinionated: disable global registry
+        flake-registry = "";
+        # Workaround for https://github.com/NixOS/nix/issues/9574
+        nix-path = config.nix.nixPath;
+      };
+      # Opinionated: disable channels
+      channel.enable = false;
 
-    # Opinionated: make flake registry and nix path match flake inputs
-    registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
-    nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
-  };
-  
+      # Opinionated: make flake registry and nix path match flake inputs
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+    };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -110,15 +112,16 @@
   users.defaultUserShell = pkgs.fish;
   environment.shells = with pkgs; [ fish ];
   programs.fish.enable = true;
+  programs.adb.enable = true;
 
   users.users = {
     eduardo = {
       isNormalUser = true;
       description = "Eduardo Funçao";
       # openssh.authorizedKeys.keys = [
-        # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
+      # TODO: Add your SSH public key(s) here, if you plan on using SSH to connect
       # ];
-      extraGroups = [ "networkmanager" "wheel" "audio" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "audio" "docker" "adbusers"];
     };
   };
 
@@ -144,34 +147,63 @@
       dates = "weekly";
     };
   };
-  
+
 
   environment.systemPackages = with pkgs; [
     tuigreet
     neovim
     vim
-    git wget curl jq unzip
+    git
+    wget
+    curl
+    jq
+    unzip
     kanata
-    ripgrep zoxide fd bat eza
-    light pavucontrol alsa-utils wireplumber blueman
-    imv zathura mpv
-    gcc gnumake cmake nodejs nodePackages.npm go gopls delve python3 openjdk
+    ripgrep
+    zoxide
+    fd
+    bat
+    eza
+    light
+    pavucontrol
+    alsa-utils
+    wireplumber
+    blueman
+    imv
+    zathura
+    mpv
+    gcc
+    gnumake
+    cmake
+    nodejs
+    nodePackages.npm
+    go
+    delve
+    python3
+    openjdk
+    gopls
+    lua-language-server
+    pyright
+    nil
+    nixpkgs-fmt
+    lua-language-server
     docker-compose
-    qemu quickemu
+    qemu
+    quickemu
   ];
 
   # This setups a SSH server. Very important if you're setting up a headless system.
   # Feel free to remove if you don't need it.
-#  services.openssh = {
-#    enable = true;
-#    settings = {
-#      # Opinionated: forbid root login through SSH.
-#      PermitRootLogin = "no";
-#      # Opinionated: use keys only.
-#      # Remove if you want to SSH using passwords
-#      PasswordAuthentication = false;
-#    };
-#  };
+  #  services.openssh = {
+  #    enable = true;
+  #    settings = {
+  #      # Opinionated: forbid root login through SSH.
+  #      PermitRootLogin = "no";
+  #      # Opinionated: use keys only.
+  #      # Remove if you want to SSH using passwords
+  #      PasswordAuthentication = false;
+  #    };
+  #  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "25.05";
