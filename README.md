@@ -74,3 +74,30 @@ home-manager switch --flake .#eduardo@nixos
 - just `sudo reboot`, login to your system and everything should work!
 
 Done 🥳
+
+
+## Tips and Quirks
+- On Every startup, Niri sets a random wallpaper from `~/.config/wallpapers`
+- Meta+Space will open up Vicinae, which is used as the app launcher. Most of the other Niri keybinds are default
+- You can change the system colorscheme easily by editing the option `stylix.base16Scheme` in  `/etc/nixos/modules/home-manager/stylix`. Most of the themes from [tinted theming](https://tinted-theming.github.io/tinted-gallery/) should be available. Run `home-manager switch --flake .#user@hostnae` to apply changes
+- There is a systemd kanata service running that swaps CapsLock and Esc. The Caps key will work as Esc on press, and as Ctrl on hold as per the config in `/etc/kanata.kbd`
+- tmux uses Ctrl+a as the leader key. Since caps lock acts as ctrl on hold, you can use your pinky and ring figers to type ctrl+a more naturally
+- nvim has a pretty barebones config using the nightly v0.12 build. I don't recommend using it, as it is pretty opinionated for my uses. I would recommend using your own neovim config or creating a neovim config from scratch using [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
+- The nixos config uses flake.nix as the entrypoint. The main config files are in `/etc/nixos/nixos/configuration.nix` and `/etc/nixos/home-manager/home.nix`. Everything else is imported from these two files
+- the default programs I use are:
+  - imv: images and gifs
+  - mpv: videos
+  - zathura: pdfs
+  - neovim: editor
+  - kitty: terminal
+  - zen-browser
+  - yazi: file manager
+  - ncdu: disk usage
+  - btop: system monitor
+  - zoxide: cd with superpowers
+  - pavucontrol: volume mixer
+  - light: control screen brightness
+  - bluetoothctl
+  - nmtui: wifi
+
+Hope you like it! 😉
