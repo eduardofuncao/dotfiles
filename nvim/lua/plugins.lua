@@ -16,15 +16,15 @@ require("gitsigns").setup({
   },
 })
 
-require("eyeliner").setup({
-  highlight_on_key = true,
-  dim = true,
-})
+-- require("eyeliner").setup({
+--   highlight_on_key = true,
+--   dim = true,
+-- })
 
-require("love2d").setup({
-  path_to_love_bin = "love",
-  restart_on_save = false,
-  debug_window_opts = nil,
-  setup_makeprg = true,
-  identify_love_projects = true
-})
+-- require("love2d").setup({
+--   path_to_love_bin = "love",
+--   restart_on_save = false,
+--   debug_window_opts = nil,
+--   setup_makeprg = true,
+--   identify_love_projects = true
+-- })

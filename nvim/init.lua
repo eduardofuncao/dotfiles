@@ -93,10 +93,10 @@ vim.pack.add({
   { src = 'https://github.com/rafamadriz/friendly-snippets' },
   { src = "https://github.com/L3MON4D3/LuaSnip" },
 
-  { src = 'http://github.com/mfussenegger/nvim-dap' },
-  { src = 'http://github.com/jbyuki/one-small-step-for-vimkind' },
-  { src = 'http://github.com/leoluz/nvim-dap-go' },
-  { src = 'http://github.com/miroshQa/debugmaster.nvim' },
+  -- { src = 'http://github.com/mfussenegger/nvim-dap' },
+  -- { src = 'http://github.com/jbyuki/one-small-step-for-vimkind' },
+  -- { src = 'http://github.com/leoluz/nvim-dap-go' },
+  -- { src = 'http://github.com/miroshQa/debugmaster.nvim' },
 
   { src = "https://github.com/echasnovski/mini.pick" },
   { src = "https://github.com/echasnovski/mini.files" },
@@ -108,9 +108,9 @@ vim.pack.add({
   { src = "https://github.com/lewis6991/gitsigns.nvim" },
   { src = "https://github.com/github/copilot.vim" },
   { src = "https://github.com/karb94/neoscroll.nvim" },
-  { src = 'http://github.com/jinh0/eyeliner.nvim' },
+  -- { src = 'http://github.com/jinh0/eyeliner.nvim' },
 
-  { src = 'http://github.com/S1M0N38/love2d.nvim' },
+  -- { src = 'http://github.com/S1M0N38/love2d.nvim' },
 })
 
 -------------------
@@ -131,7 +131,7 @@ require("lsp")
 -----------
 -- debug --
 -----------
-require("debugconfig")
+-- require("debugconfig")
 
 ------------
 -- images --
